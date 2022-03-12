@@ -1,0 +1,27 @@
+<div class="container app-home">
+    <h1>Vending Machine</h1>
+    <br><br>
+    <div>
+        <form>
+            <div class="form-group">
+              <label for="insertMoney">Insert money:</label>
+              <input type="number" class="form-control" id="insertMoney" aria-describedby="emailHelp" [formControl]="money">
+              <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="userChange">Change:</label>
+              <input type="number" class="form-control" id="userChange" [formControl]="change">
+              <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            </div>
+          </form>
+    </div>
+    <br><br>
+    <app-all-items style="width: 100%;"></app-all-items>
+    <br><br>
+    <div class="app-home-action-buttons">
+        <button class="btn btn-success" type="submit">Purchase</button>
+        <button class="btn btn-warning" (click)="onClear()">Clear</button>
+        <button class="btn btn-danger">Cancel</button>
+    </div>
+</div>
