@@ -2,25 +2,26 @@
     <h1>Vending Machine</h1>
     <br><br>
     <div>
-        <form>
-            <div class="form-group">
-              <label for="insertMoney">Insert money:</label>
-              <input type="number" class="form-control" id="insertMoney" aria-describedby="emailHelp" [formControl]="money">
-              <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-            </div>
-            <br>
-            <div class="form-group">
-              <label for="userChange">Change:</label>
-              <input type="number" class="form-control" id="userChange" [formControl]="change">
-              <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-            </div>
-          </form>
+        <form [formGroup]="form">
+          <div class="form-group">
+            <label for="insertMoney">Insert money:</label>
+            <input type="number" class="form-control" id="insertMoney" aria-describedby="emailHelp" formControlName="money" (input)="handleInput($event)" required>
+            <p *ngIf="!form.valid && error && form.controls['money'].value === 0" style="color: red;">Money cannot be empty</p>
+          </div>
+          <br>
+        </form>
+        <div class="form-group">
+          <label for="userChange">Change:</label>
+          <input class="form-control" id="userChange" [(ngModel)]="sharedService.userChange" disabled>
+        </div>
     </div>
     <br><br>
+    <div style="width: 100%; font-weight: bold; font-size: 18px;">Select an item</div>
     <app-all-items style="width: 100%;"></app-all-items>
+    <div *ngIf="sharedService.getSelectedIndex === undefined && itemError" style="color: red;width: 100%;">Please select an item</div>
     <br><br>
     <div class="app-home-action-buttons">
-        <button class="btn btn-success" type="submit">Purchase</button>
+        <button class="btn btn-success" type="submit" (click)="onPurchase()">Purchase</button>
         <button class="btn btn-warning" (click)="onClear()">Clear</button>
         <button class="btn btn-danger">Cancel</button>
     </div>

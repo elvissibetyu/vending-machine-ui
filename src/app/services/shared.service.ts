@@ -6,6 +6,9 @@ import { IItem } from '../utils/interface/items.interface';
 })
 export class SharedService {
 
+  selectedIndex!: number;
+  userChange: number;
+
   allItems = [
     {
       "item": "Sprite",
@@ -33,12 +36,30 @@ export class SharedService {
     },
   ]
 
-  constructor() { }
+  constructor() { 
+    this.userChange = 0;
+  }
 
   // getalltimesromapi
+
+  get getUserChange(): number {
+    return this.userChange;
+  }
+
+  set setUserChange(change: number) {
+    this.userChange = change;
+  }
   
 
   getAllItems(): IItem[] {
     return this.allItems;
+  }
+
+  set setSelectedIndex(index: any) {
+    this.selectedIndex = index;
+  }
+
+  get getSelectedIndex(): number {
+    return this.selectedIndex;
   }
 }

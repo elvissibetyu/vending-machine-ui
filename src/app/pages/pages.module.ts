@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReportComponent } from './report/report.component';
 import { HomeComponent } from './home/home.component';
 import { ComponentsModule } from '../components/components.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ComponentsModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   exports: [

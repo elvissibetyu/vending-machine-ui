@@ -21,4 +21,8 @@ export class AllItemsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onRadioChanged(event: any): void {
+    this.sharedService.setSelectedIndex = event.target.value;
+  }
+
 }
